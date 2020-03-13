@@ -2,39 +2,49 @@
 {% load staticfiles %}
 
 {% block title %}
-    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{#    {% if category %}{{ category.name }}{% else %}Products{% endif %}#}NCUE car for u
 {% endblock %}
 
 {% block content %}
 
     <div class="row">
-        <div class="col-md-3">
-            <h3>Categories</h3>
+        <div class="col-md-2">
+{#            <h3>Categories</h3>#}
             <ul class="nav nav-pills nav-stacked">
                 <li {% if not category %}class="active"{% endif %}>
-                    <a href="{% url "shop:product_list" %}">All</a></li>
+                    <a href="{% url "shop:product_list" %}" style="color:white;"><font size="8">All</font></a></li>
                 {% for c in categories %}
                     <li {% if category.slug == c.slug %}class="active"{% endif %}>
-                        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                        <a href="{{ c.get_absolute_url }}"><img style="width: 80px; height: 80px" src="/static/{{ c.name }}.png"></a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
 
         <div class="col-md-9">
-            <h2>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h2>
+{#            <h2>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h2>#}
             <div class="row">
                 {% for product in products %}
-                    <div class="col-md-4">
+{#                    <div class="row justify-content-start">#}
+                    <div class="col-md-16" >
+
                         <div class="thumbnail">
-                            <a href="{{ product.get_absolute_url }}">
-                                <img src="{% if product.image %}{{ product.image.url }}
+
+{#                            <a href="{{ product.get_absolute_url }}">#}
+                            <div class="justify-content-between">
+                                <img style="width: 320px; height: 230px" src="{% if product.image %}{{ product.image.url }}
                                           {% else %}{% static "img/no_image.png" %} {% endif %}">
-                            </a>
-                            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
-                            ${{ product.price }}
-                        </div>
+
+{#                            </a>#}
+                        <font size="6">{{ product.description }}</font><br>
+                        <font size="6">{{ product.name }}</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font size="6">${{ product.price }}
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{{ product.get_absolute_url }}" style="color:red;">點我購買 </a>
+
+                         </div>
+                     </div>
+
                     </div>
+{#                    </div>#}
                 {% endfor %}
             </div>
 

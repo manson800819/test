@@ -2,11 +2,18 @@
 {% load bootstrap3 %}
 <!DOCTYPE html>
 <html>
+<body style="background-image: url({% static 'bg.jpg' %});background-size:100% 150%;" >
+{#<body bgcolor="#cccccc">#}
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+{#    <link href="css/bootstrap.min.css" rel="stylesheet">#}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
@@ -15,10 +22,10 @@
 
 <div class="container">
     <div class="page-header">
-        <a href="/"><h1>My shop</h1></a>
+        <a href="/"> <img style="width: 1000px; height: 300px" src="{% static '1.png' %}"></a>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel panel-danger" >
+        <div class="panel-heading" >
             {# call __len__ #}
             {% with total_items=cart|length %}
                 {% if cart|length > 0 %}

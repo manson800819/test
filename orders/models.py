@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.db import models
 
 from shop.models import Product
@@ -24,6 +25,9 @@ class Order(models.Model):
         return sum(item.get_cost() for item in self.items.all())
 
 
+
+
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,
                               related_name='items')
@@ -38,3 +42,9 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+class SaleSummary(OrderItem):
+    class Meta:
+        proxy = True
+        verbose_name = 'Sales Summary'
+        verbose_name_plural = 'Sales Summary'
